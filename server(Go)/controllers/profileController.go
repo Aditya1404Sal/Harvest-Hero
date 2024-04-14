@@ -126,6 +126,36 @@ func AddProfile(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(profile)
 }
 
+// func updateProfile(w http.ResponseWriter, r *http.Request,email string) {
+// 	var UpdatedProfile models.Profile //getting from req
+// 	var ProfileDetails models.Profile
+
+// 	filter := bson.M{"mail": email}
+
+// 	err := collection.FindOne(context.Background(), filter).Decode(&ProfileDetails)
+// 	if err != nil {
+// 		http.Error(w, err.Error(), http.StatusBadRequest)
+// 		return
+// 	}
+
+// 	err1 := json.NewDecoder(r.Body).Decode(&UpdatedProfile)
+// 	if err1 != nil {
+// 		http.Error(w, err.Error(), http.StatusBadRequest)
+// 		return
+// 	}
+
+// 	if UpdatedProfile.About != " " {
+// 		ProfileDetails.About = UpdatedProfile.About
+// 		update := bson.M{"$set": bson.M{"about": ProfileDetails.About}}
+
+// 		_, err := collection.UpdateOne(context.Background(), filter, update)
+// 		if err != nil {
+// 			http.Error(w, err.Error(), http.StatusInternalServerError)
+// 			return
+// 		}
+// 	}
+// }
+
 func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 	// w.Header().Set("Access-Control-Allow-Methods", "PUT")
 	// // w.Header().Set("Allow-Control-Allow-Methods", "*")
@@ -163,6 +193,8 @@ func UpdateProfile(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 	}
+
+	//updateProfile(w,r,email);
 
 	// 	if UpdatedProfile.Name != ProfileDetails.Name {
 	// 		ProfileDetails.Name = UpdatedProfile.Name
